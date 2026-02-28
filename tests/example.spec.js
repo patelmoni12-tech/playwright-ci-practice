@@ -1,6 +1,10 @@
-test('CI update test', async ({ page }) => {
+const { test, expect } = require('@playwright/test');
+
+test('CI Practice Test', async ({ page }) => {
   await page.goto('https://playwright.dev/');
-  
+
   await expect(page).toHaveTitle(/Playwright/);
-  await expect(page.locator('text=Get started')).toBeVisible();
+
+  const getStarted = page.getByRole('link', { name: 'Get started' });
+  await expect(getStarted).toBeVisible();
 });
